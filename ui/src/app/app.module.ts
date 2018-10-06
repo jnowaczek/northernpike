@@ -10,6 +10,7 @@ import {SwitchesComponent} from './switches/switches.component';
 import {ThreejsComponent} from './threejs/threejs.component';
 import { LinearGaugeComponent } from './linear-gauge/linear-gauge.component';
 import { RadialGaugeComponent } from './radial-gauge/radial-gauge.component';
+import { VideoComponent } from './video/video.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { RadialGaugeComponent } from './radial-gauge/radial-gauge.component';
     SwitchesComponent,
     ThreejsComponent,
     LinearGaugeComponent,
-    RadialGaugeComponent
+    RadialGaugeComponent,
+    VideoComponent
   ],
   imports: [
     BrowserModule,

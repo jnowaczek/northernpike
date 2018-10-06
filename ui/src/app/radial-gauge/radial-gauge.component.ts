@@ -11,7 +11,6 @@ export class RadialGaugeComponent implements OnInit {
   @Input() title = 'Default';
   @Input() dataMin = '0';
   @Input() dataMax = '100';
-  @Input()
 
   constructor() { }
 
