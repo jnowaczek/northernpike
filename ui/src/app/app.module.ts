@@ -5,9 +5,12 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {AppComponent} from './app.component';
 import {InstrumentComponent} from './instrument/instrument.component';
-import { CameraviewComponent } from './cameraview/cameraview.component';
-import { SwitchesComponent } from './switches/switches.component';
-import { ThreejsComponent } from './threejs/threejs.component';
+import {CameraviewComponent} from './cameraview/cameraview.component';
+import {SwitchesComponent} from './switches/switches.component';
+import {ThreejsComponent} from './threejs/threejs.component';
+import { LinearGaugeComponent } from './linear-gauge/linear-gauge.component';
+import { RadialGaugeComponent } from './radial-gauge/radial-gauge.component';
+import { VideoComponent } from './video/video.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { ThreejsComponent } from './threejs/threejs.component';
     InstrumentComponent,
     CameraviewComponent,
     SwitchesComponent,
-    ThreejsComponent
+    ThreejsComponent,
+    LinearGaugeComponent,
+    RadialGaugeComponent,
+    VideoComponent
   ],
   imports: [
     BrowserModule,

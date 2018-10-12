@@ -2,15 +2,15 @@
   <div class="row justify-content-center m-2">
     <div class="col p-2">
       <div class="border p-1">
-        Top Stuff
+        {{title}}
       </div>
     </div>
   </div>
   <div class="row p-1 m-2">
     <div class="col-3 p-1">
-      <div class="border p-2">
-      <app-instrument></app-instrument>
-      <app-instrument></app-instrument>
+      <div class="border text-center p-2">
+        <app-radial-gauge [title]="'Depth'" [dataMin]="'0'" [dataMax]="'500'"></app-radial-gauge>
+        <app-linear-gauge></app-linear-gauge>
       </div>
     </div>
     <div class="col p-1">
