@@ -1,8 +1,8 @@
 import csv
 class roverState:
 
-	def __init__(self):
-		self.writer = csv.writer(testfile1.csv, dialect='excel')
+	# def __init__(self):
+		# self.writer = csv.writer(testfile1.csv, dialect='excel')
 
 	def getRoverGyro(self):
 		return "Gyro values x: %d y: %d z: %d" % (self.x, self.y, self.z)
