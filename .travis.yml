@@ -9,7 +9,7 @@ matrix:
     before_install:
     - sudo add-apt-repository -y ppa:mc3man/trusty-media
     - sudo apt update
-    - sudo apt install ffmpeg libavformat opus libvpx
+    - sudo apt install ffmpeg libavformat-dev opus libvpx
     - cd ui-server
     install:
     - pip install -r requirements.txt
