@@ -8,8 +8,8 @@ matrix:
     cache: pip
     before_install:
     - sudo apt update
-      sudo apt install ffmpeg libavformat opus libvpx
-      cd ui-server
+    - sudo apt install ffmpeg libavformat opus libvpx
+    - cd ui-server
     install:
     - pip install -r requirements.txt
 
@@ -27,7 +27,7 @@ matrix:
     - cd ui
     install:
     - npm install @angular/cli
-      npm install
+    - npm install
     script:
     - ng build --prod
     deploy:
