@@ -30,7 +30,7 @@ matrix:
     - npm install @angular/cli
     - npm install
     script:
-    - ng build --prod
+    - ng build --prod --base-href=/northernpike/
     deploy:
       provider: pages
       skip_cleanup: true
