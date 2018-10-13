@@ -4,10 +4,11 @@ matrix:
   - language: python
     name: "ui-server"
     python: "3.6"
+    cache: pip
     before_install:
     - cd ui-server
     install:
-    - pip install requirements.txt
+    - pip install -r requirements.txt
 
   - language: node_js
     name: "client-ui"
