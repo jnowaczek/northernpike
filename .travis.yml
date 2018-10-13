@@ -1,10 +1,11 @@
+language: generic
 matrix:
   include:
   - language: python
     name: "ui-server"
     python: "3.6"
     before_install:
-    - cd server-ui
+    - cd ui-server
     install:
     - pip install requirements.txt
 
@@ -31,4 +32,4 @@ matrix:
       github_token: $GITHUB_TOKEN
       on:
         branch: master
-      local_dir: dist/controlpanel
+      local_dir: ui/dist/controlpanel
