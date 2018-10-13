@@ -146,9 +146,9 @@ export class ThreejsComponent implements AfterViewInit {
   //   //   }
   //   // }
 
-  // public onMouseUp(event: MouseEvent) {
-  //   console.log('onMouseUp');
-  // }
+  public onMouseUp(event: MouseEvent) {
+    console.log('onMouseUp');
+  }
 
 
   @HostListener('window:resize', ['$event'])
