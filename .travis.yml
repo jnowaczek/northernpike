@@ -3,17 +3,19 @@ matrix:
   include:
   - language: python
     name: "ui-server"
-    python: "3.6"
+    python: 3.6
+    sudo: true
     cache: pip
     before_install:
-    - cd ui-server
+    - sudo apt install ffmpeg libavformat opus libvpx
+      cd ui-server
     install:
     - pip install -r requirements.txt
 
   - language: node_js
     name: "client-ui"
     node_js:
-    - "node"
+    - node
     branches:
       except:
       - gh-pages
