@@ -1,9 +1,17 @@
 <div style="text-align:center">
 
-  <!-- header is to provide space between the camera button and the stream -->
+  <!--header is to provide space between the camera button and the stream-->
   <h1 ></h1>
 
-  <!-- stream player -->
-  <video #hardwareVideo autoplay></video>
+  <input type="text" [(ngModel)]="targetpeer">
+  <button (click)="connect()">Connect</button>
+  <button (click)="message()">Send Message</button>
 
+  <h1 ></h1>
+
+  <video #hardwareVideo></video>
 </div>
+
+
+
+
