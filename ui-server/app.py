@@ -5,7 +5,7 @@ import logging
 import os
 
 import cv2
-from aiohttp import web
+from aiohttp import web, http_websocket
 from av import VideoFrame
 
 from aiortc import RTCPeerConnection, RTCSessionDescription, VideoStreamTrack
@@ -123,8 +123,33 @@ async def root_handler(request):
 
 # Serves 404s /index.html as required by Angular. Redirecting would change the url in the address bar (not desired
 # behavior) refer to https://angular.io/guide/deployment#routed-apps-must-fallback-to-indexhtml
+# DO NOT USE, currently breaks everything
 async def deeplink_handler(request):
     return web.FileResponse(os.path.join(WEB_ROOT, 'index.html'))
+
+
+async def websocket_handler(request):
+    print('Websocket connection starting')
+    ws = web.WebSocketResponse()
+    await ws.prepare(request)
+    print('Websocket connection ready')
+
+    async for msg in ws:
+        print('websocket message received :' + msg.data)
+        if msg.type == http_websocket.WSMsgType.TEXT:
+            if msg.data == 'close':
+                await ws.close()
+            else:
+                await ws.send_str(
+                    r'"switchState":[{"label":"Lights","value":{"switchState":[{"label":"Lights","value":false},{"label":"Switch 2","value":false},{"label":"Switch 3","value":false},{"label":"Switch 4","value":false},{"label":"Switch 5","value":false}]}')
+                print('Sent websocket response')
+        elif msg.type == http_websocket.WSMsgType.ERROR:
+            print('ws connection closed with exception %s' %
+                  ws.exception())
+
+    print('websocket connection closed')
+
+    return ws
 
 
 async def on_shutdown(app):
@@ -147,6 +172,6 @@ if __name__ == '__main__':
     app = web.Application()
     app.on_shutdown.append(on_shutdown)
     app.router.add_get('/', root_handler)
-    app.router.add_get('/{tail:.*}', deeplink_handler)
+    app.router.add_get('/ws', websocket_handler)
     app.router.add_static(prefix='/', path=r'../ui/dist/controlpanel/')
 web.run_app(app, port=args.port)
