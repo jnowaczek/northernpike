@@ -52,7 +52,7 @@ export class ThreejsComponent implements AfterViewInit {
     light.position.set(0, 0, 100);
     this.scene.add(light);
 
-    const light = new THREE.PointLight(0xffffff, 1, 1000);
+    light = new THREE.PointLight(0xffffff, 1, 1000);
     light.position.set(0, 0, -100);
     this.scene.add(light);
   }
