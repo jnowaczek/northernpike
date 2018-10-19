@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {TOGGLE_SWITCHES} from "../toggle_switches";
-import {Switch} from "../switch";
+import {Component, OnInit} from '@angular/core';
+import {Switch, SWITCHES, Telemetry} from '../telemetry';
+import {RovStateService} from '../rovstate.service';
 
 @Component({
   selector: 'app-switches',
@@ -10,13 +10,21 @@ import {Switch} from "../switch";
 
 export class SwitchesComponent implements OnInit {
 
-  buttons: Switch[];
+  rovstateservice: RovStateService;
+  switchState: Switch[];
 
-  constructor() {
-    this.buttons = TOGGLE_SWITCHES;
+  constructor(rovstateservice: RovStateService) {
+    this.rovstateservice = rovstateservice;
+  }
+
+  changeState() {
+    this.rovstateservice.state.next(new Telemetry(this.switchState));
   }
 
   ngOnInit() {
+    this.switchState = SWITCHES;
+    this.rovstateservice.state.subscribe(update => {
+      this.switchState = update.switchState;
+    });
   }
-
 }
