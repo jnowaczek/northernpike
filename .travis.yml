@@ -4,7 +4,7 @@ matrix:
   - language: python
     name: "ui-server"
     python: 3.6
-    sudo: true
+    sudo: false
     cache: pip
     before_install:
     - cd ui-server
@@ -15,14 +15,14 @@ matrix:
 
   - language: node_js
     name: "client-ui"
-    node_js:
-    - node
+    node_js: node
+    sudo: false
     branches:
       except:
       - gh-pages
     cache:
       directories:
-      - /ui/node_modules
+      - ui/node_modules
     before_install:
     - cd ui
     install:
