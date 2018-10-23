@@ -1,18 +1,15 @@
 language: generic
 matrix:
   include:
-#  - language: python
-#    name: "ui-server"
-#    python: 3.6
-#    sudo: true
-#    cache: pip
-#    before_install:
-#    - sudo add-apt-repository -y ppa:mc3man/trusty-media
-#    - sudo apt update
-#    - sudo apt install ffmpeg libavformat54 libopus0 libvpx1
-#    - cd ui-server
-#    install:
-#    - pip install -r requirements.txt
+  - language: python
+    name: "ui-server"
+    python: 3.6
+    sudo: true
+    cache: pip
+    before_install:
+    - cd ui-server
+    install:
+    - pip install -r requirements.txt
 
   - language: node_js
     name: "client-ui"
