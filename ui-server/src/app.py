@@ -1,8 +1,9 @@
 import os
+from pathlib import Path
 
 from aiohttp import web, http_websocket
 
-WEB_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'ui/dist/controlpanel/')
+WEB_ROOT = Path(__file__).parents[2] / 'ui/dist/controlpanel/'
 
 
 # Serve index.html when '/' is requested
@@ -45,10 +46,11 @@ async def on_shutdown(app):
     for ws in set(app['websockets']):
         await ws.close()
 
+
 if __name__ == '__main__':
     server = web.Application()
     server.on_shutdown.append(on_shutdown)
     server.router.add_get('/', root_handler)
     server.router.add_get('/ws', websocket_handler)
-    server.router.add_static(prefix='/', path=r'../ui/dist/controlpanel/')
-    web.run_app(server, port=8080)
+    server.router.add_static(prefix='/', path=WEB_ROOT)
+    web.run_app(server, host='127.0.0.1', port=8080)
