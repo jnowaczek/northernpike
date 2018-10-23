@@ -140,9 +140,8 @@ async def websocket_handler(request):
             if msg.data == 'close':
                 await ws.close()
             else:
-                await ws.send_str(
-                    r'"switchState":[{"label":"Lights","value":{"switchState":[{"label":"Lights","value":false},{"label":"Switch 2","value":false},{"label":"Switch 3","value":false},{"label":"Switch 4","value":false},{"label":"Switch 5","value":false}]}')
-                print('Sent websocket response')
+                await ws.send_str(msg.data)
+                print('Sent websocket echo')
         elif msg.type == http_websocket.WSMsgType.ERROR:
             print('ws connection closed with exception %s' %
                   ws.exception())

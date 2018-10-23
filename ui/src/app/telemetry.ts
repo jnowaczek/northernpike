@@ -14,8 +14,7 @@ export const SWITCHES: Switch[] = [
 export class Telemetry {
   switchState: Switch[];
 
-  constructor(switchState: Switch[]) {
+  constructor(switchState: Switch[] = SWITCHES) {
     this.switchState = switchState;
   }
-
 }
