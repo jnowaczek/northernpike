@@ -4,7 +4,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from '@angular/forms';
 
 import {AppComponent} from './app.component';
-import {InstrumentComponent} from './instrument/instrument.component';
 import {CameraviewComponent} from './cameraview/cameraview.component';
 import {SwitchesComponent} from './switches/switches.component';
 import {ThreejsComponent} from './threejs/threejs.component';
@@ -17,7 +16,6 @@ import {RovStateService} from './rovstate.service';
 @NgModule({
   declarations: [
     AppComponent,
-    InstrumentComponent,
     CameraviewComponent,
     SwitchesComponent,
     ThreejsComponent,

@@ -1,7 +1,3 @@
-<div class="col">
-  <img class="videoPanel" src="http://{{streamIp}}:8080/?action=stream">
-  <div class="videoPanel row">
-    <input id="streamIpInput" type="text">
-    <button (click)="setStreamIp()">Set</button>
-  </div>
+<div class="container">
+  <img id="stream" class="img-fluid" [src]="streamURL">
 </div>

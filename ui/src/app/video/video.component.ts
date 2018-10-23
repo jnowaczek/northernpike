@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-video',
@@ -7,19 +7,12 @@ import {Component, OnInit} from '@angular/core';
 })
 export class VideoComponent implements OnInit {
 
-  streamIp = '127.0.0.1';
-  streamIpInput: HTMLInputElement;
+  @Input() public streamURL = 'http://' + location.host + ':8081/?action=stream';
 
   constructor() {
   }
 
   ngOnInit() {
-    this.streamIpInput = <HTMLInputElement> document.getElementById('streamIpInput');
-  }
 
-  setStreamIp(){
-    this.streamIp = this.streamIpInput.value;
-    console.log(this.streamIp);
   }
-
 }
