@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from '@angular/forms';
 
-
 import {AppComponent} from './app.component';
 import {InstrumentComponent} from './instrument/instrument.component';
 import {CameraviewComponent} from './cameraview/cameraview.component';
@@ -30,6 +29,7 @@ import {RovStateService} from './rovstate.service';
     BrowserModule,
     FormsModule,
     NgbModule
+
   ],
   providers: [WebsocketService, RovStateService],
   bootstrap: [AppComponent]
