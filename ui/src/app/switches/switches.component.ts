@@ -5,26 +5,28 @@ import {RovStateService} from '../rovstate.service';
 @Component({
   selector: 'app-switches',
   templateUrl: './switches.component.html',
-  styleUrls: ['./switches.component.css']
+  styleUrls: ['./switches.component.css'],
+  providers: [RovStateService]
 })
 
 export class SwitchesComponent implements OnInit {
 
-  rovstateservice: RovStateService;
+  rovService: RovStateService;
   switchState: Switch[];
 
-  constructor(rovstateservice: RovStateService) {
-    this.rovstateservice = rovstateservice;
+  constructor(rovService: RovStateService) {
+    this.rovService = rovService;
   }
 
   changeState() {
-    this.rovstateservice.state.next(new Telemetry(this.switchState));
+    this.rovService.pushState(new Telemetry(this.switchState));
   }
 
   ngOnInit() {
-    this.switchState = SWITCHES;
-    this.rovstateservice.state.subscribe(update => {
-      this.switchState = update.switchState;
+    this.rovService.state.subscribe((newTelemetry: Telemetry) => {
+      console.log('component subscfriptioin triggerd: ' + typeof newTelemetry);
+      this.switchState = newTelemetry.switchState;
     });
+
   }
 }
