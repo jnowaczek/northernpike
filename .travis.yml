@@ -22,7 +22,7 @@ matrix:
       - gh-pages
     cache:
       directories:
-      - ui/node_modules
+      - "$HOME/.npm"
     before_install:
     - cd ui
     install:
