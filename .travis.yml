@@ -26,7 +26,6 @@ matrix:
     before_install:
     - cd ui
     install:
-    - npm install @angular/cli
     - npm ci
     script:
     - ng build --prod --base-href=/northernpike/
