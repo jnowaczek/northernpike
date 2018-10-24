@@ -7,7 +7,7 @@ WEB_ROOT = Path(__file__).parents[2] / 'ui/dist/controlpanel/'
 
 
 # Serve index.html when '/' is requested
-async def root_handler():
+async def root_handler(request):
     return web.FileResponse(os.path.join(WEB_ROOT, 'index.html'))
 
 
@@ -15,7 +15,7 @@ async def root_handler():
 # in the address bar (not desired behavior) refer to
 # https://angular.io/guide/deployment#routed-apps-must-fallback-to-indexhtml
 # DO NOT USE, currently breaks everything
-async def deeplink_handler():
+async def deeplink_handler(request):
     return web.FileResponse(os.path.join(WEB_ROOT, 'index.html'))
 
 

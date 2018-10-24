@@ -15,19 +15,18 @@ matrix:
 
   - language: node_js
     name: "client-ui"
-    node_js: node
+    node_js: 8
     sudo: false
     branches:
       except:
       - gh-pages
     cache:
       directories:
-      - ui/node_modules
+      - "$HOME/.npm"
     before_install:
     - cd ui
     install:
-    - npm install @angular/cli
-    - npm install
+    - npm ci
     script:
     - ng build --prod --base-href=/northernpike/
     deploy:
