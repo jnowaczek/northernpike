@@ -24,8 +24,8 @@ module.exports = function (config) {
     reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
-    logLevel: config.LOG_INFO,
-    autoWatch: true,
+    logLevel: config.LOG_WARN,
+    autoWatch: false,
     browsers: ['Firefox'],
     singleRun: true
   });
