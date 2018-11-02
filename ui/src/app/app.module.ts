@@ -4,33 +4,34 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from '@angular/forms';
 
 import {AppComponent} from './app.component';
-import {CameraviewComponent} from './cameraview/cameraview.component';
 import {SwitchesComponent} from './switches/switches.component';
-import {ThreejsComponent} from './threejs/threejs.component';
 import {LinearGaugeComponent} from './linear-gauge/linear-gauge.component';
 import {RadialGaugeComponent} from './radial-gauge/radial-gauge.component';
-import {VideoComponent} from './video/video.component';
 import {WebsocketService} from './websocket.service';
 import {RovStateService} from './rovstate.service';
+import {ViewportModule} from './viewport/viewport.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CameraviewComponent,
     SwitchesComponent,
-    ThreejsComponent,
     LinearGaugeComponent,
-    RadialGaugeComponent,
-    VideoComponent
+    RadialGaugeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    NgbModule
-
+    NgbModule,
+    ViewportModule
   ],
   providers: [WebsocketService, RovStateService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    AppComponent,
+    SwitchesComponent,
+    LinearGaugeComponent,
+    RadialGaugeComponent,
+  ]
 })
 export class AppModule {
 }
