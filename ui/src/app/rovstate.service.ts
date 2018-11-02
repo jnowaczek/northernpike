@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Subject} from 'rxjs';
 import {WebsocketService} from './websocket.service';
+import {RovState} from './RovState';
 import {Telemetry} from './telemetry';
 
 const WS_URL = 'ws://' + location.host + '/ws';
@@ -10,7 +11,7 @@ const WS_URL = 'ws://' + location.host + '/ws';
 })
 export class RovStateService {
 
-  public state = new BehaviorSubject(new Telemetry());
+  public state = new BehaviorSubject(new RovState());
   private socket: Subject<MessageEvent>;
 
   constructor(websocket: WebsocketService) {
@@ -20,7 +21,7 @@ export class RovStateService {
     });
   }
 
-  public pushState(newState: Telemetry): void {
+  public pushState(newState: RovState): void {
     this.socket.next(new MessageEvent('telemetry', {data: newState}));
   }
 }

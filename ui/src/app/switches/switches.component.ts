@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Switch, SWITCHES, Telemetry} from '../telemetry';
+import {Switch, SWITCHES, RovState} from '../RovState';
 import {RovStateService} from '../rovstate.service';
 
 @Component({
@@ -19,11 +19,11 @@ export class SwitchesComponent implements OnInit {
   }
 
   changeState() {
-    this.rovService.pushState(new Telemetry(this.switchState));
+    this.rovService.pushState(new RovState(this.switchState));
   }
 
   ngOnInit() {
-    this.rovService.state.subscribe((newTelemetry: Telemetry) => {
+    this.rovService.state.subscribe((newTelemetry: RovState) => {
       console.log('component subscfriptioin triggerd: ' + typeof newTelemetry);
       this.switchState = newTelemetry.switchState;
     });

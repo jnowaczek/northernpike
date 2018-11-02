@@ -30,6 +30,8 @@ matrix:
     install:
     - npm ci
     script:
+    - node node_modules/protobufjs/cli/bin/pbjs -t static-module -o ../shared/protos/telemetry.js ../shared/protos/telemetry.proto
+    - node node_modules/protobufjs/cli/bin/pbts -o ../shared/protos/telemetry.d.ts ../shared/protos/telemetry.js
     - ng test --watch=false
     - ng build --prod --base-href=/northernpike/
     deploy:
