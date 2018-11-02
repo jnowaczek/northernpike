@@ -1,3 +1,4 @@
+
 export class Switch {
   label: string;
   value: boolean;
@@ -11,7 +12,7 @@ export const SWITCHES: Switch[] = [
   {label: 'Switch 5', value: false},
 ];
 
-export class Telemetry {
+export class RovState {
   switchState: Switch[];
 
   constructor(switchState: Switch[] = SWITCHES) {
