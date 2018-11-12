@@ -17,6 +17,6 @@ export class ThrusterGaugeComponent implements OnInit {
     gaugeAppendText = "%";
     gaugeMin = "0";
     gaugeMax = "100";
-    gaugeSize = "110";
+    gaugeSize = "120";
 
 }

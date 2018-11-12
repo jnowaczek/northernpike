@@ -17,6 +17,6 @@ export class TempGaugeComponent implements OnInit {
     gaugeAppendText = "°C";
     gaugeMin = "-50";
     gaugeMax = "50";
-    gaugeSize = "110";
+    gaugeSize = "120";
 
 }

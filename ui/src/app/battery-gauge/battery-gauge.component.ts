@@ -13,11 +13,10 @@ export class BatteryGaugeComponent implements OnInit {
   }
   gaugeType = "semi";
     gaugeValue = 70;
-    gaugeLabel = "Battery";
     gaugeAppendText = "%";
     gaugeMin = "0";
     gaugeMax = "100";
-    gaugeSize = "75";
+    gaugeSize = "80";
 
     thresholdConfig = {
         '75': {color: 'green'},

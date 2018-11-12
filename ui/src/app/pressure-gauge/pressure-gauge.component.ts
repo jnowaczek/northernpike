@@ -17,6 +17,6 @@ export class PressureGaugeComponent implements OnInit {
     gaugeAppendText = "kPa";
     gaugeMin = "0";
     gaugeMax = "1100";
-    gaugeSize = "110"
+    gaugeSize = "120"
 
 }
