@@ -4,11 +4,11 @@ export class Switch {
 }
 
 export const SWITCHES: Switch[] = [
-  {label: 'Lights', value: false},
-  {label: 'Switch 2', value: false},
-  {label: 'Switch 3', value: false},
-  {label: 'Switch 4', value: false},
-  {label: 'Switch 5', value: false},
+  {label: 'LED', value: false},
+  {label: 'S 2', value: false},
+  {label: 'S 3', value: false},
+  {label: 'S 4', value: false},
+  {label: 'S 5', value: false},
 ];
 
 export class Telemetry {

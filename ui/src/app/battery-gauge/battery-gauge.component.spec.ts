@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ThreejsComponent } from './threejs.component';
+import { BatteryGaugeComponent } from './battery-gauge.component';
 
-describe('ThreejsComponent', () => {
-  let component: ThreejsComponent;
-  let fixture: ComponentFixture<ThreejsComponent>;
+describe('BatteryGaugeComponent', () => {
+  let component: BatteryGaugeComponent;
+  let fixture: ComponentFixture<BatteryGaugeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ThreejsComponent ]
+      declarations: [ BatteryGaugeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ThreejsComponent);
+    fixture = TestBed.createComponent(BatteryGaugeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
