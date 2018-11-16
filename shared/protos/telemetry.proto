@@ -2,64 +2,34 @@ syntax = "proto3";
 
 import "google/protobuf/timestamp.proto";
 
-message Telemetry {
+//  =======================
+//   SERVER -> CLIENT DATA
+//  =======================
 
-    //  =========================
-    //   SUBMESSAGE DESCRIPTIONS
-    //  =========================
+message Alert {
+    string alert_text = 1;
+}
 
-    message SwitchState {
+message Switch {
+    message State {
         string switch_name = 1;
         bool value = 2;
     }
 
-    message GyroState {
-        int32 x = 1;
-        int32 y = 2;
-        int32 z = 3;
-    }
-
-    message BarometerState {
-        int32 value = 1;
-    }
-
-    message CompassState {
-        int32 heading = 1;
-    }
-
-    message AnalogStickState {
-        message AnalogAxis {
-            string name = 1;
-            float x_position = 2;
-            float y_position = 3;
-            int32 angle_degrees = 4;
-            float angle_radians = 5;
-        }
-        // Allows for an arbitrary number of control axes (propulsion, camera gimbal, whatever)
-        repeated AnalogAxis axes = 1;
-    }
-
-    //  =======================
-    //   SERVER -> CLIENT DATA
-    //  =======================
-
-    // I'm thinking that this can serve as the connection heartbeat
     google.protobuf.Timestamp message_time = 1;
+    int32 count = 2;
+    repeated State states = 3;
+}
 
-    // Insert relevant electronic diagnostics here
-    float voltage = 2;
+message Control {
+    message AnalogAxis {
+        string name = 1;
+        float x_position = 2;
+        float y_position = 3;
+        int32 angle_degrees = 4;
+        float angle_radians = 5;
+    }
 
-    // Instruments
-    GyroState gyro = 3;
-    BarometerState barometer = 4;
-    CompassState compass = 5;
-
-    //  =======================
-    //   CLIENT -> SERVER DATA
-    //  =======================
-
-    // Allows for an arbitrary number of boolean switches
-    repeated SwitchState switches = 11;
-
-    AnalogStickState controller_axes = 12;
+    google.protobuf.Timestamp message_time = 1;
+    repeated AnalogAxis axes = 2;
 }
