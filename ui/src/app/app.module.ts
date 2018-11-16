@@ -18,6 +18,7 @@ import { PressureGaugeComponent } from './pressure-gauge/pressure-gauge.componen
 import { ThrusterGaugeComponent } from './thruster-gauge/thruster-gauge.component';
 import { BatteryGaugeComponent } from './battery-gauge/battery-gauge.component';
 import { SlideSwitchComponent } from './slide-switch/slide-switch.component';
+import { LightGaugeComponent } from './light-gauge/light-gauge.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SlideSwitchComponent } from './slide-switch/slide-switch.component';
     PressureGaugeComponent,
     ThrusterGaugeComponent,
     BatteryGaugeComponent,
-    SlideSwitchComponent
+    SlideSwitchComponent,
+    LightGaugeComponent
   ],
   imports: [
     BrowserModule,
