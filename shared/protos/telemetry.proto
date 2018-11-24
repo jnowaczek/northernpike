@@ -16,9 +16,8 @@ message Switch {
         bool value = 2;
     }
 
-    google.protobuf.Timestamp message_time = 1;
-    int32 count = 2;
-    repeated State states = 3;
+    int32 count = 1;
+    repeated State states = 2;
 }
 
 message Control {
@@ -30,6 +29,14 @@ message Control {
         float angle_radians = 5;
     }
 
+    repeated AnalogAxis axes = 1;
+}
+
+message Telemetry {
     google.protobuf.Timestamp message_time = 1;
-    repeated AnalogAxis axes = 2;
+    oneof message_type {
+        Alert alert = 2;
+        Switch switch = 3;
+        Control control = 4;
+    }
 }
