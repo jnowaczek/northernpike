@@ -1,6 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ThrusterGaugeComponent } from './thruster-gauge.component';
+import {ThrusterGaugeComponent} from './thruster-gauge.component';
+import {IMPORTS} from '../app.imports';
+import {DECLARATIONS} from '../app.declarations';
 
 describe('ThrusterGaugeComponent', () => {
   let component: ThrusterGaugeComponent;
@@ -8,9 +10,9 @@ describe('ThrusterGaugeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ThrusterGaugeComponent ]
+      declarations: DECLARATIONS, imports: IMPORTS
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

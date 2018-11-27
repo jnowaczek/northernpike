@@ -9,6 +9,15 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {WebsocketService} from './websocket.service';
 import {RovStateService} from './rovstate.service';
 import {ViewportModule} from './viewport/viewport.module';
+import {LightSliderComponent} from './light-slider/light-slider.component';
+import {TempGaugeComponent} from './temp-gauge/temp-gauge.component';
+import {PressureGaugeComponent} from './pressure-gauge/pressure-gauge.component';
+import {ThrusterGaugeComponent} from './thruster-gauge/thruster-gauge.component';
+import {BatteryGaugeComponent} from './battery-gauge/battery-gauge.component';
+import {SlideSwitchComponent} from './slide-switch/slide-switch.component';
+import {LightGaugeComponent} from './light-gauge/light-gauge.component';
+import {Ng5SliderModule} from 'ng5-slider';
+import {NgxGaugeModule} from 'ngx-gauge';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -18,12 +27,21 @@ describe('AppComponent', () => {
         SwitchesComponent,
         LinearGaugeComponent,
         RadialGaugeComponent,
+        LightSliderComponent,
+        TempGaugeComponent,
+        PressureGaugeComponent,
+        ThrusterGaugeComponent,
+        BatteryGaugeComponent,
+        SlideSwitchComponent,
+        LightGaugeComponent
       ],
       imports: [
         BrowserModule,
         FormsModule,
         NgbModule,
-        ViewportModule
+        ViewportModule,
+        Ng5SliderModule,
+        NgxGaugeModule
       ],
       providers: [WebsocketService, RovStateService]
     }).compileComponents();
@@ -38,10 +56,10 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('Northern Pike Control Panel');
   }));
-  it('should render title in a h1 tag', async(() => {
+  it('should render title in a h3 tag', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Northern Pike Control Panel');
+    expect(compiled.querySelector('h3').textContent).toContain('Northern Pike Control Panel');
   }));
 });

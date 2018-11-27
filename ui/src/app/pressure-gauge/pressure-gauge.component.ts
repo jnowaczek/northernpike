@@ -8,15 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class PressureGaugeComponent implements OnInit {
 
   constructor() { }
+    gaugeType = 'arch';
+    gaugeValue = 400;
+    gaugeLabel = 'Pressure';
+    gaugeAppendText = 'kPa';
+    gaugeMin = '0';
+    gaugeMax = '1100';
+    gaugeSize = '120';
 
   ngOnInit() {
   }
-    gaugeType = "arch";
-    gaugeValue = 400;
-    gaugeLabel = "Pressure";
-    gaugeAppendText = "kPa";
-    gaugeMin = "0";
-    gaugeMax = "1100";
-    gaugeSize = "120"
 
 }

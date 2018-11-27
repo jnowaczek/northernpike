@@ -8,15 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class ThrusterGaugeComponent implements OnInit {
 
   constructor() { }
+    gaugeType = 'semi';
+    gaugeValue = 45;
+    gaugeLabel = 'Thruster';
+    gaugeAppendText = '%';
+    gaugeMin = '0';
+    gaugeMax = '100';
+    gaugeSize = '120';
 
   ngOnInit() {
   }
-    gaugeType = "semi";
-    gaugeValue = 45;
-    gaugeLabel = "Thruster";
-    gaugeAppendText = "%";
-    gaugeMin = "0";
-    gaugeMax = "100";
-    gaugeSize = "120";
 
 }

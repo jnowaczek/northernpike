@@ -1,11 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {CameraviewComponent} from './cameraview.component';
-import {BrowserModule} from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {ThreejsComponent} from '../threejs/threejs.component';
-import {VideoComponent} from '../video/video.component';
+import {DECLARATIONS} from '../../app.declarations';
+import {IMPORTS} from '../../app.imports';
 
 describe('CameraviewComponent', () => {
   let component: CameraviewComponent;
@@ -13,17 +10,9 @@ describe('CameraviewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        CameraviewComponent,
-        ThreejsComponent,
-        VideoComponent
-      ],
+      declarations: DECLARATIONS,
 
-      imports: [
-        BrowserModule,
-        FormsModule,
-        NgbModule
-      ]
+      imports: IMPORTS
     })
       .compileComponents();
   }));

@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SlideSwitchComponent } from './slide-switch.component';
+import {DECLARATIONS} from '../app.declarations';
+import {IMPORTS} from '../app.imports';
 
 describe('SlideSwitchComponent', () => {
   let component: SlideSwitchComponent;
@@ -8,7 +10,7 @@ describe('SlideSwitchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SlideSwitchComponent ]
+      declarations: DECLARATIONS, imports: IMPORTS
     })
     .compileComponents();
   }));

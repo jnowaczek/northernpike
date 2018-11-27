@@ -8,15 +8,15 @@ import { Options } from 'ng5-slider';
 export class LightSliderComponent implements OnInit {
 
   constructor() { }
-
-  ngOnInit() {
-  }
-    value: number = 0;
+    value = 0;
     options: Options = {
     floor: 0,
     ceil: 100,
     step: 25,
-    ticksArray: [0,25,50,75,100]
+    ticksArray: [0, 25, 50, 75, 100]
   };
+
+  ngOnInit() {
+  }
 }
 

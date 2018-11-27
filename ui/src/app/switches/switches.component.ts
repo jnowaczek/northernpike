@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Switch, SWITCHES, Telemetry} from '../telemetry';
+import {Switch, Telemetry} from '../telemetry';
 import {RovStateService} from '../rovstate.service';
 
 @Component({
