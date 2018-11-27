@@ -1,6 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TempGaugeComponent } from './temp-gauge.component';
+import {TempGaugeComponent} from './temp-gauge.component';
+import {DECLARATIONS} from '../app.declarations';
+import {IMPORTS} from '../app.imports';
 
 describe('TempGaugeComponent', () => {
   let component: TempGaugeComponent;
@@ -8,9 +10,9 @@ describe('TempGaugeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TempGaugeComponent ]
+      declarations: DECLARATIONS, imports: IMPORTS
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

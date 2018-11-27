@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LightGaugeComponent } from './light-gauge.component';
+import {DECLARATIONS} from '../app.declarations';
+import {IMPORTS} from '../app.imports';
 
 describe('LightGaugeComponent', () => {
   let component: LightGaugeComponent;
@@ -8,7 +10,7 @@ describe('LightGaugeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LightGaugeComponent ]
+      declarations: DECLARATIONS, imports: IMPORTS
     })
     .compileComponents();
   }));

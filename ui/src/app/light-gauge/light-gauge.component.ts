@@ -8,15 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class LightGaugeComponent implements OnInit {
 
   constructor() { }
+  gaugeType = 'semi';
+    gaugeValue = 45;
+    gaugeLabel = 'Light';
+    gaugeAppendText = '%';
+    gaugeMin = '0';
+    gaugeMax = '100';
+    gaugeSize = '80';
 
   ngOnInit() {
   }
-  gaugeType = "semi";
-    gaugeValue = 45;
-    gaugeLabel = "Light";
-    gaugeAppendText = "%";
-    gaugeMin = "0";
-    gaugeMax = "100";
-    gaugeSize = "80";
 
 }

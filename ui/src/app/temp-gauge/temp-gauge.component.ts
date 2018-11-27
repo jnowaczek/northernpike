@@ -8,15 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class TempGaugeComponent implements OnInit {
 
   constructor() { }
+  gaugeType = 'semi';
+    gaugeValue = 0;
+    gaugeLabel = 'Temperature';
+    gaugeAppendText = '°C';
+    gaugeMin = '-50';
+    gaugeMax = '50';
+    gaugeSize = '120';
 
   ngOnInit() {
   }
-  gaugeType = "semi";
-    gaugeValue = 0;
-    gaugeLabel = "Temperature";
-    gaugeAppendText = "°C";
-    gaugeMin = "-50";
-    gaugeMax = "50";
-    gaugeSize = "120";
 
 }

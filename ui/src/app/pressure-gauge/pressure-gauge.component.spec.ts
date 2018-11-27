@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PressureGaugeComponent } from './pressure-gauge.component';
+import {DECLARATIONS} from '../app.declarations';
+import {IMPORTS} from '../app.imports';
 
 describe('PressureGaugeComponent', () => {
   let component: PressureGaugeComponent;
@@ -8,7 +10,7 @@ describe('PressureGaugeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PressureGaugeComponent ]
+      declarations: DECLARATIONS, imports: IMPORTS
     })
     .compileComponents();
   }));
