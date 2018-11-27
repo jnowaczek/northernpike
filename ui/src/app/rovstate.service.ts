@@ -3,7 +3,7 @@ import {BehaviorSubject, Subject} from 'rxjs';
 import {WebsocketService} from './websocket.service';
 import {Telemetry} from './telemetry';
 
-const WS_URL = 'ws://' + location.host + '/ws';
+const WS_URL = 'wss://' + location.host + '/ws';
 
 @Injectable({
   providedIn: 'root'
