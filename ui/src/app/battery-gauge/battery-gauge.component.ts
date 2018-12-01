@@ -1,27 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-battery-gauge',
-  templateUrl: './battery-gauge.component.html',
-  styleUrls: ['./battery-gauge.component.css']
+	selector: 'app-battery-gauge',
+	templateUrl: './battery-gauge.component.html',
+	styleUrls: ['./battery-gauge.component.css']
 })
 export class BatteryGaugeComponent implements OnInit {
 
-  constructor() { }
+	constructor() {
+	}
 
-  ngOnInit() {
-  }
-  gaugeType = "semi";
-    gaugeValue = 70;
-    gaugeAppendText = "%";
-    gaugeMin = "0";
-    gaugeMax = "100";
-    gaugeSize = "80";
+	ngOnInit() {
+	}
 
-    thresholdConfig = {
-        '75': {color: 'green'},
-        '50': {color: 'orange'},
-        '25': {color: 'red'}
-    };
+	gaugeType = 'semi';
+	gaugeValue = 70;
+	gaugeAppendText = '%';
+	gaugeMin = '0';
+	gaugeMax = '100';
+	gaugeSize = '80';
+
+	thresholdConfig = {
+		'75': {color: 'green'},
+		'50': {color: 'orange'},
+		'25': {color: 'red'}
+	};
 
 }

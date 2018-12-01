@@ -6,19 +6,19 @@ import {FormsModule} from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-    NgbModule
-  ],
-  declarations: [
-    VideoComponent,
-    CameraviewComponent
-  ],
-  exports: [
-    VideoComponent,
-    CameraviewComponent
-  ]
+	imports: [
+		BrowserModule,
+		FormsModule,
+		NgbModule
+	],
+	declarations: [
+		VideoComponent,
+		CameraviewComponent
+	],
+	exports: [
+		VideoComponent,
+		CameraviewComponent
+	]
 })
 export class ViewportModule {
 }
