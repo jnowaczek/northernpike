@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+message SwitchCommand {
+    string name = 1;
+    bool value = 2;
+}
+
+message Command {
+    google.protobuf.Timestamp timestamp = 1;
+    oneof type {
+        SwitchCommand toggle = 2;
+    }
+}

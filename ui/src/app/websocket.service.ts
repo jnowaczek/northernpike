@@ -19,6 +19,7 @@ export class WebsocketService {
 
 	private create(url): Subject<MessageEvent> {
 		const ws = new WebSocket(url);
+		ws.binaryType = 'arraybuffer';
 		console.log('Websocket created');
 
 		const observable = Observable.create(
@@ -32,7 +33,7 @@ export class WebsocketService {
 		const observer = {
 			next: (data: MessageEvent) => {
 				if (ws.readyState === WebSocket.OPEN) {
-					ws.send(JSON.stringify(data.data));
+					ws.send(data.data);
 				}
 			}
 		};

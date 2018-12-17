@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='telemetry.proto',
   package='',
   syntax='proto3',
-  serialized_pb=_b('\n\x0ftelemetry.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x1b\n\x05\x41lert\x12\x12\n\nalert_text\x18\x01 \x01(\t\"\x95\x01\n\x06Switch\x12\x30\n\x0cmessage_time\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\r\n\x05\x63ount\x18\x02 \x01(\x05\x12\x1d\n\x06states\x18\x03 \x03(\x0b\x32\r.Switch.State\x1a+\n\x05State\x12\x13\n\x0bswitch_name\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x08\"\xd0\x01\n\x07\x43ontrol\x12\x30\n\x0cmessage_time\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12!\n\x04\x61xes\x18\x02 \x03(\x0b\x32\x13.Control.AnalogAxis\x1ap\n\nAnalogAxis\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x12\n\nx_position\x18\x02 \x01(\x02\x12\x12\n\ny_position\x18\x03 \x01(\x02\x12\x15\n\rangle_degrees\x18\x04 \x01(\x05\x12\x15\n\rangle_radians\x18\x05 \x01(\x02\x62\x06proto3')
+  serialized_pb=_b('\n\x0ftelemetry.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x1b\n\x05\x41lert\x12\x12\n\nalert_text\x18\x01 \x01(\t\"c\n\x06Switch\x12\r\n\x05\x63ount\x18\x01 \x01(\x05\x12\x1d\n\x06states\x18\x02 \x03(\x0b\x32\r.Switch.State\x1a+\n\x05State\x12\x13\n\x0bswitch_name\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x08\"\x9e\x01\n\x07\x43ontrol\x12!\n\x04\x61xes\x18\x01 \x03(\x0b\x32\x13.Control.AnalogAxis\x1ap\n\nAnalogAxis\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x12\n\nx_position\x18\x02 \x01(\x02\x12\x12\n\ny_position\x18\x03 \x01(\x02\x12\x15\n\rangle_degrees\x18\x04 \x01(\x05\x12\x15\n\rangle_radians\x18\x05 \x01(\x02\"\x96\x01\n\tTelemetry\x12\x30\n\x0cmessage_time\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x17\n\x05\x61lert\x18\x02 \x01(\x0b\x32\x06.AlertH\x00\x12\x19\n\x06switch\x18\x03 \x01(\x0b\x32\x07.SwitchH\x00\x12\x1b\n\x07\x63ontrol\x18\x04 \x01(\x0b\x32\x08.ControlH\x00\x42\x06\n\x04typeb\x06proto3')
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -91,8 +91,8 @@ _SWITCH_STATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=188,
-  serialized_end=231,
+  serialized_start=137,
+  serialized_end=180,
 )
 
 _SWITCH = _descriptor.Descriptor(
@@ -103,22 +103,15 @@ _SWITCH = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='message_time', full_name='Switch.message_time', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='count', full_name='Switch.count', index=1,
-      number=2, type=5, cpp_type=1, label=1,
+      name='count', full_name='Switch.count', index=0,
+      number=1, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='states', full_name='Switch.states', index=2,
-      number=3, type=11, cpp_type=10, label=3,
+      name='states', full_name='Switch.states', index=1,
+      number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -135,8 +128,8 @@ _SWITCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=82,
-  serialized_end=231,
+  serialized_start=81,
+  serialized_end=180,
 )
 
 
@@ -194,8 +187,8 @@ _CONTROL_ANALOGAXIS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=330,
-  serialized_end=442,
+  serialized_start=229,
+  serialized_end=341,
 )
 
 _CONTROL = _descriptor.Descriptor(
@@ -206,15 +199,8 @@ _CONTROL = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='message_time', full_name='Control.message_time', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='axes', full_name='Control.axes', index=1,
-      number=2, type=11, cpp_type=10, label=3,
+      name='axes', full_name='Control.axes', index=0,
+      number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -231,19 +217,86 @@ _CONTROL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=234,
-  serialized_end=442,
+  serialized_start=183,
+  serialized_end=341,
+)
+
+
+_TELEMETRY = _descriptor.Descriptor(
+  name='Telemetry',
+  full_name='Telemetry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='message_time', full_name='Telemetry.message_time', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='alert', full_name='Telemetry.alert', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='switch', full_name='Telemetry.switch', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='control', full_name='Telemetry.control', index=3,
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='type', full_name='Telemetry.type',
+      index=0, containing_type=None, fields=[]),
+  ],
+  serialized_start=344,
+  serialized_end=494,
 )
 
 _SWITCH_STATE.containing_type = _SWITCH
-_SWITCH.fields_by_name['message_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _SWITCH.fields_by_name['states'].message_type = _SWITCH_STATE
 _CONTROL_ANALOGAXIS.containing_type = _CONTROL
-_CONTROL.fields_by_name['message_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _CONTROL.fields_by_name['axes'].message_type = _CONTROL_ANALOGAXIS
+_TELEMETRY.fields_by_name['message_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
+_TELEMETRY.fields_by_name['alert'].message_type = _ALERT
+_TELEMETRY.fields_by_name['switch'].message_type = _SWITCH
+_TELEMETRY.fields_by_name['control'].message_type = _CONTROL
+_TELEMETRY.oneofs_by_name['type'].fields.append(
+  _TELEMETRY.fields_by_name['alert'])
+_TELEMETRY.fields_by_name['alert'].containing_oneof = _TELEMETRY.oneofs_by_name['type']
+_TELEMETRY.oneofs_by_name['type'].fields.append(
+  _TELEMETRY.fields_by_name['switch'])
+_TELEMETRY.fields_by_name['switch'].containing_oneof = _TELEMETRY.oneofs_by_name['type']
+_TELEMETRY.oneofs_by_name['type'].fields.append(
+  _TELEMETRY.fields_by_name['control'])
+_TELEMETRY.fields_by_name['control'].containing_oneof = _TELEMETRY.oneofs_by_name['type']
 DESCRIPTOR.message_types_by_name['Alert'] = _ALERT
 DESCRIPTOR.message_types_by_name['Switch'] = _SWITCH
 DESCRIPTOR.message_types_by_name['Control'] = _CONTROL
+DESCRIPTOR.message_types_by_name['Telemetry'] = _TELEMETRY
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Alert = _reflection.GeneratedProtocolMessageType('Alert', (_message.Message,), dict(
@@ -282,6 +335,13 @@ Control = _reflection.GeneratedProtocolMessageType('Control', (_message.Message,
   ))
 _sym_db.RegisterMessage(Control)
 _sym_db.RegisterMessage(Control.AnalogAxis)
+
+Telemetry = _reflection.GeneratedProtocolMessageType('Telemetry', (_message.Message,), dict(
+  DESCRIPTOR = _TELEMETRY,
+  __module__ = 'telemetry_pb2'
+  # @@protoc_insertion_point(class_scope:Telemetry)
+  ))
+_sym_db.RegisterMessage(Telemetry)
 
 
 # @@protoc_insertion_point(module_scope)

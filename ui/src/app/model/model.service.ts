@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Observable, Subject} from 'rxjs';
+import {Subject} from 'rxjs';
 import {WebsocketService} from '../websocket.service';
-import {load, Message} from 'protobufjs';
-
-const WS_URL = 'ws://' + location.host + '/ws';
+import {load} from 'protobufjs';
+import {RovModel} from './RovModel';
 
 @Injectable({
 	providedIn: 'root'
@@ -12,7 +11,7 @@ export class ModelService {
 
 	private socket: Subject<MessageEvent>;
 	private telemetryMessage;
-	public switches: Observable<boolean>;
+	public model = new RovModel();
 
 	constructor(websocket: WebsocketService) {
 		console.log('init modelsvc');
@@ -21,26 +20,38 @@ export class ModelService {
 				console.log('failed to load .proto');
 				throw error;
 			}
-
 			this.telemetryMessage = root.lookupType('Telemetry');
-			console.log('Loaded protobuf');
-
-			this.socket = websocket.connect(WS_URL);
-			this.socket.subscribe((msg: MessageEvent) => {
-				this.parseMessage(msg);
-			});
-			this.switches = Observable.create((observer) => {
-				observer.next(true);
-			});
+			console.log('Loaded protobuf definition');
+			// If we're on github.io don't initialize WS
+			if (!(location.hostname.includes('github'))) {
+				const wsUrl = 'ws://' + location.host + '/ws';
+				this.socket = websocket.connect(wsUrl);
+				this.socket.subscribe((msg: MessageEvent) => {
+					this.parseMessage(msg);
+				});
+			}
+			// for (const bs of this.model.observables) {
+			// 	bs.subscribe(() => {
+			// 		this.composeMessage(bs.getValue());
+			// 	});
+			// }
 		});
 	}
 
 	private parseMessage(msg: MessageEvent): void {
-		const decoded = Message.decode(msg.data);
-		console.log(decoded);
+		const decoded = this.telemetryMessage.decode(new Uint8Array(msg.data));
+		console.log('Decoded submessage of type: ' + decoded.type);
+		switch (decoded.type) {
+			case ('switch'):
+				this.model.switches.next(decoded.switch.states);
+				break;
+			default:
+				console.log('No message action implemented: ' + decoded);
+				break;
+		}
 	}
 
-	private verifyMessage(msg: any): boolean {
-		return;
+	private composeMessage(source: any): void {
+		console.log('compose message: ' + source);
 	}
 }

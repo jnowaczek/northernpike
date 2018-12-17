@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
-
-from aiohttp import web, http_websocket
+from aiohttp import web, http_websocket, ClientWebSocketResponse
+import telemetry_pb2
 
 WEB_ROOT = Path(__file__).parents[2] / 'ui/dist/controlpanel/'
 
@@ -25,14 +25,22 @@ async def websocket_handler(request):
     await socket.prepare(request)
     print('Websocket connection ready')
 
+    proto = telemetry_pb2.Telemetry()
+    proto.message_time.GetCurrentTime()
+    proto.alert.alert_text = 'TEST!'
+    await socket.send_bytes(proto.SerializeToString())
+    print('websocket message sent')
+
     async for msg in socket:
         print('websocket message received :' + msg.data)
         if msg.type == http_websocket.WSMsgType.TEXT:
             if msg.data == 'close':
                 await socket.close()
             else:
-                await socket.send_str(msg.data)
-                print('Sent websocket echo')
+                proto.value = 123
+                data = proto.SerializeToString()
+                await socket.send_str(data)
+                print('Sent websocket test message')
         elif msg.type == http_websocket.WSMsgType.ERROR:
             print('ws connection closed with exception %s' %
                   socket.exception())

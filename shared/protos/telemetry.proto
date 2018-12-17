@@ -34,7 +34,7 @@ message Control {
 
 message Telemetry {
     google.protobuf.Timestamp message_time = 1;
-    oneof message_type {
+    oneof type {
         Alert alert = 2;
         Switch switch = 3;
         Control control = 4;

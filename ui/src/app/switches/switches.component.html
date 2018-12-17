@@ -2,7 +2,7 @@
 	<div class="btn-group-toggle p-1" *ngFor="let switch of switchState;let i = index">
 		<label class="btn-outline-primary w-100" ngbButtonLabel>
 			<input type="checkbox" (change)="this.changeState()" [(ngModel)]="switchState[i].value"
-				   ngbButton> {{ switch.label }}
+				   ngbButton> {{ switch.name }}
 		</label>
 	</div>
 </div>
