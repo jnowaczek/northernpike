@@ -32,14 +32,13 @@ async def websocket_handler(request):
     print('websocket message sent')
 
     async for msg in socket:
-        print('websocket message received :' + msg.data)
+        print('websocket message received: ' + msg.data)
         if msg.type == http_websocket.WSMsgType.TEXT:
             if msg.data == 'close':
                 await socket.close()
             else:
-                proto.value = 123
                 data = proto.SerializeToString()
-                await socket.send_str(data)
+                await socket.send_bytes(data)
                 print('Sent websocket test message')
         elif msg.type == http_websocket.WSMsgType.ERROR:
             print('ws connection closed with exception %s' %

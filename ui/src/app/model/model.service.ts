@@ -3,15 +3,12 @@ import {Subject} from 'rxjs';
 import {WebsocketService} from '../websocket.service';
 import {load} from 'protobufjs';
 import {RovModel} from './RovModel';
+import {Command} from './commands/Command';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class ModelService {
-
-	private socket: Subject<MessageEvent>;
-	private telemetryMessage;
-	public model = new RovModel();
 
 	constructor(websocket: WebsocketService) {
 		console.log('init modelsvc');
@@ -22,7 +19,7 @@ export class ModelService {
 			}
 			this.telemetryMessage = root.lookupType('Telemetry');
 			console.log('Loaded protobuf definition');
-			// If we're on github.io don't initialize WS
+			// If we're on Github Pages don't initialize WS
 			if (!(location.hostname.includes('github'))) {
 				const wsUrl = 'ws://' + location.host + '/ws';
 				this.socket = websocket.connect(wsUrl);
@@ -30,7 +27,8 @@ export class ModelService {
 					this.parseMessage(msg);
 				});
 			}
-			// for (const bs of this.model.observables) {
+			// for (const bs of this.model.observables
+			// ) {
 			// 	bs.subscribe(() => {
 			// 		this.composeMessage(bs.getValue());
 			// 	});
@@ -38,12 +36,22 @@ export class ModelService {
 		});
 	}
 
+	public static model = new RovModel();
+
+	private socket: Subject<MessageEvent>;
+	private telemetryMessage;
+
+	public execCommand(c: Command) {
+		c.execute();
+		this.socket.next(new MessageEvent('command', {data: c.serialize()}));
+	}
+
 	private parseMessage(msg: MessageEvent): void {
 		const decoded = this.telemetryMessage.decode(new Uint8Array(msg.data));
 		console.log('Decoded submessage of type: ' + decoded.type);
 		switch (decoded.type) {
 			case ('switch'):
-				this.model.switches.next(decoded.switch.states);
+				ModelService.model.switches.next(decoded.switch.states);
 				break;
 			default:
 				console.log('No message action implemented: ' + decoded);

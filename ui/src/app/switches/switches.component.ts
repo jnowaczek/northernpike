@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ModelService} from '../model/model.service';
 import {Switch} from '../model/RovModel';
+import {SwitchCommand} from '../model/commands/SwitchCommand';
 
 @Component({
 	selector: 'app-switches',
@@ -11,19 +12,19 @@ import {Switch} from '../model/RovModel';
 
 export class SwitchesComponent implements OnInit {
 
-	rovService: ModelService;
+	modelService: ModelService;
 	switchState: Switch[];
 
-	constructor(rovService: ModelService) {
-		this.rovService = rovService;
+	constructor(modelService: ModelService) {
+		this.modelService = modelService;
 	}
 
-	changeState() {
-		this.rovService.model.switches.next(this.switchState);
+	changeState(index: number) {
+		this.modelService.execCommand(new SwitchCommand(index));
 	}
 
 	ngOnInit() {
-		this.rovService.model.switches.subscribe((switches) => {
+		ModelService.model.switches.subscribe((switches) => {
 			this.switchState = switches;
 		});
 	}
