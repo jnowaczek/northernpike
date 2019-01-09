@@ -4,7 +4,6 @@ matrix:
     - language: python
       name: "ui-server"
       python: 3.6
-      sudo: false
       cache: pip
       before_install:
         - cd ui-server
@@ -13,12 +12,11 @@ matrix:
         - wget https://github.com/protocolbuffers/protobuf/releases/download/v3.6.1/protoc-3.6.1-linux-x86_64.zip
         - unzip protoc-3.6.1-linux-x86_64.zip
       script:
-        - ./protoc-3.6.1-linux-x86_64/bin/protoc --proto_path='../shared/protos/' commands.proto --python-out='./src/'
-        - pylint src/
+        - ./bin/protoc --proto_path='../shared/protos/' commands.proto --python-out='./src/'
+        # - pylint src/
     - language: node_js
       name: "client-ui"
       node_js: 8
-      sudo: false
       branches:
         except:
           - gh-pages
@@ -35,7 +33,7 @@ matrix:
         # Not currently used since Protobuf.js loads the .proto directly
         # - node node_modules/protobufjs/cli/bin/pbjs -t static-module -o ../shared/protos/commands.js ../shared/protos/commands.proto
         # - node node_modules/protobufjs/cli/bin/pbts -o ../shared/protos/commands.d.ts ../shared/protos/commands.js
-        - ng test --watch=false
+        # - ng test --watch=false
         - ng build --prod --base-href=/northernpike/
       deploy:
         provider: pages
