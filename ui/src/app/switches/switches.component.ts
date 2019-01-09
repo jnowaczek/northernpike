@@ -1,30 +1,27 @@
 import {Component, OnInit} from '@angular/core';
-import {ModelService} from '../model/model.service';
-import {Switch} from '../model/RovModel';
-import {SwitchCommand} from '../model/commands/SwitchCommand';
+import {CommandService} from '../model/command.service';
 
 @Component({
 	selector: 'app-switches',
 	templateUrl: './switches.component.html',
-	styleUrls: ['./switches.component.css'],
-	providers: [ModelService]
+	styleUrls: ['./switches.component.css']
 })
 
 export class SwitchesComponent implements OnInit {
 
-	modelService: ModelService;
-	switchState: Switch[];
+	switchState: { [name: string]: boolean };
 
-	constructor(modelService: ModelService) {
-		this.modelService = modelService;
+	constructor(private commandService: CommandService) {
+		this.commandService = commandService;
 	}
 
-	changeState(index: number) {
-		this.modelService.execCommand(new SwitchCommand(index));
+	changeState() {
+		this.commandService.hudModel.toggles.next(this.switchState);
+		// this.service.execCommand(new SwitchCommand(index));
 	}
 
 	ngOnInit() {
-		ModelService.model.switches.subscribe((switches) => {
+		this.commandService.hudModel.toggles.subscribe((switches) => {
 			this.switchState = switches;
 		});
 	}

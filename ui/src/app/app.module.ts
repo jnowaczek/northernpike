@@ -10,7 +10,7 @@ import {SwitchesComponent} from './switches/switches.component';
 import {LinearGaugeComponent} from './linear-gauge/linear-gauge.component';
 import {RadialGaugeComponent} from './radial-gauge/radial-gauge.component';
 import {WebsocketService} from './websocket.service';
-import {ModelService} from './model/model.service';
+import {CommandService} from './model/command.service';
 import {ViewportModule} from './viewport/viewport.module';
 import {LightSliderComponent} from './light-slider/light-slider.component';
 import {TempGaugeComponent} from './temp-gauge/temp-gauge.component';
@@ -19,6 +19,48 @@ import {ThrusterGaugeComponent} from './thruster-gauge/thruster-gauge.component'
 import {BatteryGaugeComponent} from './battery-gauge/battery-gauge.component';
 import {SlideSwitchComponent} from './slide-switch/slide-switch.component';
 import {LightGaugeComponent} from './light-gauge/light-gauge.component';
+import {NotifierModule, NotifierOptions} from 'angular-notifier';
+
+const customNotifierOptions: NotifierOptions = {
+  position: {
+		horizontal: {
+			position: 'left',
+			distance: 12
+		},
+		vertical: {
+			position: 'bottom',
+			distance: 12,
+			gap: 10
+		}
+	},
+  theme: 'material',
+  behaviour: {
+    autoHide: 10000,
+    onClick: 'hide',
+    onMouseover: 'pauseAutoHide',
+    showDismissButton: true,
+    stacking: 4
+  },
+  animations: {
+    enabled: true,
+    show: {
+      preset: 'slide',
+      speed: 300,
+      easing: 'ease'
+    },
+    hide: {
+      preset: 'fade',
+      speed: 300,
+      easing: 'ease',
+      offset: 50
+    },
+    shift: {
+      speed: 300,
+      easing: 'ease'
+    },
+    overlap: 150
+  }
+};
 
 @NgModule({
 	declarations: [
@@ -40,9 +82,10 @@ import {LightGaugeComponent} from './light-gauge/light-gauge.component';
 		NgbModule,
 		ViewportModule,
 		Ng5SliderModule,
-		NgxGaugeModule
+		NgxGaugeModule,
+		NotifierModule.withConfig(customNotifierOptions)
 	],
-	providers: [WebsocketService, ModelService],
+	providers: [WebsocketService, CommandService],
 	bootstrap: [AppComponent],
 	exports: [
 		AppComponent,

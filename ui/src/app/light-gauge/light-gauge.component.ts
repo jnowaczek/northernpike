@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {CommandService} from '../model/command.service';
 
 @Component({
 	selector: 'app-light-gauge',
@@ -7,7 +8,8 @@ import {Component, OnInit} from '@angular/core';
 })
 export class LightGaugeComponent implements OnInit {
 
-	constructor() {
+	constructor(private commandService: CommandService) {
+		this.commandService = commandService;
 	}
 
 	ngOnInit() {

@@ -7,7 +7,7 @@ import {RadialGaugeComponent} from './radial-gauge/radial-gauge.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {WebsocketService} from './websocket.service';
-import {ModelService} from './model/model.service';
+import {CommandService} from './model/command.service';
 import {ViewportModule} from './viewport/viewport.module';
 
 describe('AppComponent', () => {
@@ -25,7 +25,7 @@ describe('AppComponent', () => {
 				NgbModule,
 				ViewportModule
 			],
-			providers: [WebsocketService, ModelService]
+			providers: [WebsocketService, CommandService]
 		}).compileComponents();
 	}));
 	it('should create the app', async(() => {

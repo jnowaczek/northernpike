@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 from aiohttp import web, http_websocket, ClientWebSocketResponse
-import telemetry_pb2
+import commands_pb2
 
 WEB_ROOT = Path(__file__).parents[2] / 'ui/dist/controlpanel/'
 
@@ -25,9 +25,10 @@ async def websocket_handler(request):
     await socket.prepare(request)
     print('Websocket connection ready')
 
-    proto = telemetry_pb2.Telemetry()
+    proto = commands_pb2.Command()
     proto.message_time.GetCurrentTime()
-    proto.alert.alert_text = 'TEST!'
+    proto.alert.alert_text = 'Test Alert message sent from server!'
+    proto.alert.alert_level = proto.alert.SUCCESS
     await socket.send_bytes(proto.SerializeToString())
     print('websocket message sent')
 

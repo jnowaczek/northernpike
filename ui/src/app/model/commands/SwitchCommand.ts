@@ -1,5 +1,5 @@
 import {Command} from './Command';
-import {ModelService} from '../model.service';
+import {CommandService} from '../command.service';
 import {load} from 'protobufjs';
 
 export class SwitchCommand implements Command {
@@ -19,12 +19,12 @@ export class SwitchCommand implements Command {
 	}
 
 	execute(): void {
-		const current = ModelService.model.switches.getValue();
-		if (current[this.index].value === true) {
-			current[this.index].value = false;
-		} else {
-			current[this.index].value = false;
-		}
-		ModelService.model.switches.next(current);
+		// const current = CommandService.model.switches.getValue();
+		// if (current[this.index].value === true) {
+		// 	current[this.index].value = false;
+		// } else {
+		// 	current[this.index].value = false;
+		// }
+		// CommandService.model.switches.next(current);
 	}
 }
