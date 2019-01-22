@@ -1,4 +1,5 @@
 import os
+import asyncio
 from pathlib import Path
 from aiohttp import web, http_websocket, ClientWebSocketResponse
 import commands_pb2
@@ -30,7 +31,16 @@ async def websocket_handler(request):
     proto.alert.alert_text = 'Test Alert message sent from server!'
     proto.alert.alert_level = proto.alert.SUCCESS
     await socket.send_bytes(proto.SerializeToString())
-    print('websocket message sent')
+    print('websocket alert message sent')
+
+    await asyncio.sleep(5)
+
+    proto = commands_pb2.Command()
+    proto.message_time.GetCurrentTime()
+    proto.toggle.name = 'Lights'
+    proto.toggle.value = True
+    await socket.send_bytes(proto.SerializeToString())
+    print('websocket toggle message sent')
 
     async for msg in socket:
         print('websocket message received: ' + msg.data)

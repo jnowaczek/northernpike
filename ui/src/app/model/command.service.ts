@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
 import {WebsocketService} from '../websocket.service';
-import {load, Message, Root} from 'protobufjs';
+import {load, Root} from 'protobufjs';
 import {HUDModel} from './HUDModel';
 import {NotifierService} from 'angular-notifier';
+import {CommandFactory} from './commands/Command';
 
 @Injectable({
 	providedIn: 'root'
@@ -45,28 +46,7 @@ export class CommandService {
 	private parseMessage(msg: MessageEvent): void {
 		const decoded = this.commandMessage.decode(new Uint8Array(msg.data));
 		console.log('Decoded Command message:', decoded);
-
-		// TODO: IMPLEMENT COMMAND INVOKER TO REPLACE SPECIAL CASE
-		if (decoded.hasOwnProperty('alert')) {
-			switch (decoded.alert.alertLevel) {
-				case 0:
-					this.notifierService.notify('error', decoded.alert.alertText);
-					break;
-				case 1:
-					this.notifierService.notify('warning', decoded.alert.alertText);
-					break;
-				case 2:
-					this.notifierService.notify('info', decoded.alert.alertText);
-					break;
-				case 4:
-					this.notifierService.notify('success', decoded.alert.alertText);
-					break;
-				default:
-					this.notifierService.notify('default', decoded.alert.alertText);
-					break;
-			}
-
-		}
+		CommandFactory.createCommand(decoded.commandType, decoded, this, this.notifierService).execute();
 	}
 
 	private composeMessage(source: any): void {
