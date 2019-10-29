@@ -8,3 +8,5 @@ The University of Minnesota Duluth Robotics Club's 2018/2019 Project.  Northern 
 ## Subprojects
 ### [Client-UI](ui/README.md)
 Current progress avaliable on [Github Pages](https://umnduluthrobotics.github.io/northernpike/)
+
+Project is dead... :( 
